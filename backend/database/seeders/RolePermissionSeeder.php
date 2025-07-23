@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -54,5 +55,7 @@ class RolePermissionSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
         $editor->assignRole('editor');
+
+        $this->command->info('Permissions and roles created successfully.');
     }
 }
