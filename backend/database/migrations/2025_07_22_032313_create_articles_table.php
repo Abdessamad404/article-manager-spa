@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->string('image')->nullable();
             $table->enum('status', ['draft', 'pending', 'approved', 'rejected'])->default('draft');
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->datetime('created_at')->useCurrent();
+            $table->datetime('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->index(['status', 'category']);
             $table->index('author_id');
